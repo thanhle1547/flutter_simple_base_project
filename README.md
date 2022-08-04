@@ -10,5 +10,6 @@ Base cơ bản cho dự án Flutter.
 
 ## Naming Convention
 
-> [Effective Dart: Style](https://dart.dev/guides/language/effective-dart/style)
-> [Flutter: Best Practices and Tips](https://medium.com/flutter-community/flutter-best-practices-and-tips-7c2782c9ebb5)
+> 1. [Effective Dart: Style](https://dart.dev/guides/language/effective-dart/style)
+>
+> 2. [Flutter: Best Practices and Tips](https://medium.com/flutter-community/flutter-best-practices-and-tips-7c2782c9ebb5)
