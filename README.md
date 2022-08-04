@@ -1,16 +1,14 @@
 # flutter_simple_base_project
 
-A new Flutter project.
+Base cơ bản cho dự án Flutter.
 
-## Getting Started
+## Cấu trúc thư mục
 
-This project is a starting point for a Flutter application.
+- Tất cả các file/thư mục được đặt tên theo kiểu `snake_case`
 
-A few resources to get you started if this is your first Flutter project:
+> [Guideline](https://github.com/thanhle1547/flutter_architecture_notes/tree/main/proposed_simple_scalable)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Naming Convention
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+> [Effective Dart: Style](https://dart.dev/guides/language/effective-dart/style)
+> [Flutter: Best Practices and Tips](https://medium.com/flutter-community/flutter-best-practices-and-tips-7c2782c9ebb5)

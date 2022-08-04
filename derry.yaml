@@ -1,0 +1,45 @@
+# Uses the derry cmd line and package to semi-automate 
+# flutter project workflows, see:
+# https://pub.dev/packages/derry/install
+
+# cmd-line is: derry build
+build:
+  - flutter pub run build_runner build
+
+watch:
+  - flutter pub run build_runner watch
+
+clean:
+  - flutter clean
+  - flutter pub get
+
+purge:
+  - pod deintegrate
+  - flutter clean
+  - flutter pub get
+
+purge_all:
+  - pod deintegrate
+  - rm Flutter/Flutter.podspec
+  - flutter clean
+  - flutter pub cache repair
+  - flutter pub get
+  - flutter run
+
+pod_update: 
+  (execution): once
+  (scripts):
+    - cd ios
+    - rm -rf Pods/
+    - rm -rf Podfile.lock
+    - cd ..
+    - flutter clean
+    - flutter pub get
+    - cd ios
+    - pod install --repo-update
+    - cd ..
+
+clean_build_runner:
+  - flutter packages pub run build_runner clean
+  - flutter packages pub run build_runner build
+  - flutter packages pub run build_runner build --delete-conflicting-outputs
