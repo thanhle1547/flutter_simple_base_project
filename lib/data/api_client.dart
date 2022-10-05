@@ -146,11 +146,7 @@ class ApiClient {
       }
     }
 
-    return RequestResponse(
-      response.data,
-      response.statusCode ?? StatusCode.ok,
-      response.headers,
-    );
+    return RequestResponse.fromDioResponse(response);
   }
 
   Future<Response> fetchWithRequestOptions(RequestOptions options) =>
