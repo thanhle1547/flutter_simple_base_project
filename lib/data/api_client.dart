@@ -13,16 +13,16 @@ import 'models/request_response.dart';
 import 'models/status_code.dart';
 import 'services/connectivity_service.dart';
 
-const _exceptionCanResolveByReFecth = [
+const _exceptionCanResolveByReFetch = [
   'HttpException: Connection closed before full header was received',
   'HandshakeException: Connection terminated during handshake',
   'Connecting timed out',
   'Receiving data timeout',
 ];
 
-bool _shouldReFecth(DioError e, int retryTimes) {
-  return _exceptionCanResolveByReFecth.any((el) => e.message.contains(el)) &&
-      retryTimes <= AppConst.refecthApiThreshold;
+bool _shouldReFetch(DioError e, int retryTimes) {
+  return _exceptionCanResolveByReFetch.any((el) => e.message.contains(el)) &&
+      retryTimes <= AppConst.refetchApiThreshold;
 }
 
 final _baseOptions = BaseOptions(
@@ -137,7 +137,7 @@ class ApiClient {
 
         break;
       } on DioError catch (e) {
-        if (_shouldReFecth(e, retryTimes)) {
+        if (_shouldReFetch(e, retryTimes)) {
           retryTimes++;
           continue;
         }
@@ -188,7 +188,7 @@ class ApiClient {
 
         break;
       } on DioError catch (e) {
-        if (_shouldReFecth(e, retryTimes)) {
+        if (_shouldReFetch(e, retryTimes)) {
           retryTimes++;
           continue;
         }
@@ -209,7 +209,7 @@ class ApiClient {
       }
     }
 
-    if (retryTimes == AppConst.refecthApiThreshold) {
+    if (retryTimes == AppConst.refetchApiThreshold) {
       return PoorConnectionException();
     }
 

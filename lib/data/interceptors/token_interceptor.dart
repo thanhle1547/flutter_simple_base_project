@@ -18,7 +18,7 @@ class TokenInterceptor extends InterceptorsWrapper {
     ErrorInterceptorHandler handler,
   ) async {
     if (err.response?.statusCode == StatusCode.unauthorized &&
-        _times <= AppConst.refecthApiThreshold) {
+        _times <= AppConst.refetchApiThreshold) {
       try {
         _times++;
         SystemUtils.debugLog('TokenInterceptor', _times.toString());
@@ -33,7 +33,7 @@ class TokenInterceptor extends InterceptorsWrapper {
       handler.resolve(
           await ApiClient().fetchWithRequestOptions(err.requestOptions));
     } else {
-      if (_times > AppConst.refecthApiThreshold) {
+      if (_times > AppConst.refetchApiThreshold) {
         _times = 1;
         handler.resolve(Response(
           requestOptions: err.requestOptions..data = err.response,

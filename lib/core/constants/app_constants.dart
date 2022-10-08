@@ -11,7 +11,7 @@ class AppConst {
 
   // Api
 
-  static const int refecthApiThreshold = 3;
+  static const int refetchApiThreshold = 3;
 
   static const int limitOfListDataLengthForEachRequest = 20;
 
