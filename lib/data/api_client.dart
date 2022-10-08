@@ -10,7 +10,6 @@ import 'package:flutter_simple_base_project/utils/helpers/system_utils.dart';
 import 'interceptors/token_interceptor.dart';
 import 'models/request_method.dart';
 import 'models/request_response.dart';
-import 'models/status_code.dart';
 import 'services/connectivity_service.dart';
 
 const _exceptionCanResolveByReFetch = [
