@@ -16,9 +16,7 @@ Base cơ bản cho dự án Flutter.
 
 ## Note
 
-Concept được trình bày dưới đây là đề xuất của cá nhân và
-
-> Đây không phải là best practices
+Concept được trình bày dưới đây là đề xuất của cá nhân
 
 Để giảm số lần viết code cập nhật dữ liệu từ tương tác của người dùng, ví dụ:
 
