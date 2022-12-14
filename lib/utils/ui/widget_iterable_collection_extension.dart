@@ -1,5 +1,10 @@
 extension WidgetIterableCollectionExtension<Widget> on Iterable<Widget> {
-  Iterable<Widget> separateWith(Widget widget) sync* {
+  Iterable<Widget> separateWith([Widget? widget]) sync* {
+    if (widget == null) {
+      yield* this;
+      return;
+    }
+
     final int len = length;
     int count = 0;
     final Iterator<Widget> it = iterator;
@@ -8,5 +13,36 @@ extension WidgetIterableCollectionExtension<Widget> on Iterable<Widget> {
       yield it.current;
       if (count != len) yield widget;
     }
+  }
+
+  /// Adds one or more widgets to the beginning.
+  ///
+  /// ```dart
+  /// List<Widget> arr = [ D(), E(), F() ];
+  ///
+  /// print(
+  ///   arr.unshift(widget: A() )
+  /// ); // [ A(), D(), E(), F() ]
+  ///
+  /// print(
+  ///   arr.unshift(widgets: [ A(), B(), C() ])
+  /// ); // [ A(), B(), C(), D(), E(), F() ]
+  ///
+  /// print(
+  ///   arr.unshift(
+  ///     widget: S(),
+  ///     widgets: [ A(), B(), C() ]
+  ///   )
+  /// ); // [ S(), A(), B(), C(), D(), E(), F() ]
+  /// ```
+  Iterable<Widget> unshift({
+    Widget? widget,
+    List<Widget> widgets = const [],
+  }) sync* {
+    if (widget != null) yield widget;
+
+    if (widgets.isNotEmpty) yield* widgets;
+
+    yield* this;
   }
 }
