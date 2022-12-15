@@ -16,23 +16,23 @@
 /// print(json.query<String>('b.#0.c'));      // null
 /// print(json.query<String>('b.#1.c'));      // 2
 ///
-/// print(json.lookUp<String>('a'));          // 1
+/// print(json.lookup<String>('a'));          // 1
 ///
 /// print(json.getAndApply<int, String>('aa', converter: int.parse));   // null
 /// print(json.getAndApplyWhen<String, int>(
 ///   'a', converter: (int value) => value.toString()
 /// )); // 1
 ///
-/// print(json.lookUpAndApply<int, String>('a', converter: int.parse)); // 1
+/// print(json.lookupAndApply<int, String>('a', converter: int.parse)); // 1
 ///
 /// // Key value aaa is missing from list, add it using [defaultValue].
-/// print(json.lookUpAndApply<int, String>(
+/// print(json.lookupAndApply<int, String>(
 ///   'aaa', defaultValue: 10, converter: int.parse
 /// )); // 10
 ///
 /// import 'package:intl/intl.dart';
 ///
-/// print(json.lookUpAndApply2<String, String, DateTime>(
+/// print(json.lookupAndApply2<String, String, DateTime>(
 ///   'd',
 ///   converter1: DateTime.parse,
 ///   converter2: DateFormat('dd/MM/yyyy').format
@@ -86,7 +86,7 @@ extension JsonExt on Map<String, dynamic> {
           foundOptionalValue = true;
         }
 
-        return source.lookUp(effectiveTarget, foundOptionalValue);
+        return source.lookup(effectiveTarget, foundOptionalValue);
       }
 
       if (source is List) {
@@ -379,7 +379,7 @@ extension JsonExt on Map<String, dynamic> {
   ///   "b": "2"
   /// };
   ///
-  /// print(json.lookUp<String>('a'));  // 1
+  /// print(json.lookup<String>('a'));  // 1
   /// ```
   R lookup<R>(
     String key, {
@@ -422,10 +422,10 @@ extension JsonExt on Map<String, dynamic> {
   ///   "b": "2"
   /// };
   ///
-  /// print(json.lookUpAndApply<int, String>('a', converter: int.parse)); // 1
+  /// print(json.lookupAndApply<int, String>('a', converter: int.parse)); // 1
   ///
   /// // Key value aaa is missing from list, add it using [defaultValue].
-  /// print(json.lookUpAndApply<int, String>(
+  /// print(json.lookupAndApply<int, String>(
   ///   'aaa', defaultValue: 10, converter: int.parse
   /// )); // 10
   /// ```
@@ -468,7 +468,7 @@ extension JsonExt on Map<String, dynamic> {
   ///   "time": "2022-10-01 10:15:07.922"
   /// };
   ///
-  /// print(json.lookUpAndApply2<String, String, DateTime>(
+  /// print(json.lookupAndApply2<String, String, DateTime>(
   ///   'time',
   ///   converter1: DateTime.parse,
   ///   converter2: DateFormat('dd/MM/yyyy').format
@@ -618,7 +618,7 @@ extension JsonExt on Map<String, dynamic> {
 }
 
 extension on Map {
-  R? lookUp<R extends Object?>(String key, bool nullable) {
+  R? lookup<R extends Object?>(String key, bool nullable) {
     final value = this[key];
     if (value == null) {
       if (nullable) return null;
