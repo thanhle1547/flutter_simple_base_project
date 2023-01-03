@@ -6,6 +6,12 @@ extension WidgetIterableCollectionExtension<Widget> on Iterable<Widget> {
     }
 
     final int len = length;
+
+    if (len == 1) {
+      yield* this;
+      return;
+    }
+
     int count = 0;
     final Iterator<Widget> it = iterator;
     while (it.moveNext()) {
