@@ -532,7 +532,11 @@ extension JsonExt on Map<String, dynamic> {
       return null;
     }
 
-    return converter?.call(value) ?? value;
+    if (converter != null) {
+      return converter(value);
+    }
+
+    return value;
   }
 
   /// Get the value of [key], or return null if it is not provided.
